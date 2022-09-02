@@ -1,15 +1,16 @@
 const express = require('express');
 const https = require('https');
-
+const ejs = require('ejs'); 
 const app = express();
 const bodyParser= require('body-parser');
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
+app.set('view engine','ejs')
 app.get('/', (req, res) => {
-    res.sendFile(__dirname +'/index.html');
+    res.render('index');
 })
-
+app.use(express('public'))
 app.post('/', (req, res) => {
 
     location =req.body.location
